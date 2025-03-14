@@ -1,7 +1,15 @@
 'use client';
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect, useState, Suspense } from "react"
 import * as THREE from "three";
+import { useGLTF, OrbitControls } from "@react-three/drei";
+
+function Model({ position, rotation }: { position: [number, number, number], rotation: [number, number, number]}) {
+  const { scene } = useGLTF("/untitled.glb"); // Replace with your model path
+  return <primitive object={scene} position={position} rotation={rotation}/>;
+};
+
+
 const Cube = ({position, size}: {position: Array<number>, size: Array<number>}) => {
   const ref = useRef<THREE.Mesh>(null)
   const scrollSpeed = 0.1;
@@ -44,7 +52,11 @@ export default function Home() {
     <div className="canvas-container">
       <Canvas>
         <directionalLight position={[0, 0, 2]}/>
-        <Cube position={[2, 0, 0]} size={[1, 1, 1]} /> 
+        <ambientLight intensity={0.5} />
+        <Suspense fallback={null}>
+          <Model position={[0, -1, -3]} rotation={[0, Math.PI / 1.3, 0]} />
+        </Suspense>
+        <OrbitControls />
       </Canvas>
     </div>
   );
