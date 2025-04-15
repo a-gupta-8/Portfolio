@@ -1,0 +1,24 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"first_name": {
+				"__TYPE__": "FieldContent",
+				"value": "refused",
+				"type": "Text"
+			},
+			"last_name": {
+				"__TYPE__": "FieldContent",
+				"value": "basis",
+				"type": "Text"
+			},
+			"job_role": {
+				"__TYPE__": "FieldContent",
+				"value": "paper",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
